@@ -1,0 +1,29 @@
+<h2>Products</h2>
+<!--Update the *ngFor directive to assign each index in the products array to the productId variable when iterating over the list.-->
+<div *ngFor="let product of products; index as productId"><!--create a div for each product -->
+
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products',productId]"> <!--link to product details-->
+      {{ product.name }} <!-- interpolation render a property to text-->
+    </a>
+  </h3>
+
+  <p *ngIf="product.description"> <!-- create a p just if exist a product description -->
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()"><!--bind the button click event to the share, () event binding parenthesis on the event, share is a function on product-list.components.ts--> 
+  Share
+  </button>
+
+<!-- to include the new component-->
+  <app-product-alerts 
+    [product] = "product"  
+    (notify)="onNotify()">
+  </app-product-alerts>
+<!-- pass the current product as input to the component using property binding-->
+
+<!-- receive ouput from the product-alerts
+bind the app-product-alerts component (which is what displays the "Notify Me" button) to the onNotify()-->
+
+</div>

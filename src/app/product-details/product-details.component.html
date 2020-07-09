@@ -1,0 +1,9 @@
+<div *ngIf="product">
+  <h2>Product Details</h2>
+  <h3>{{ product.name }} </h3>
+  <!-- A pipe is a way you can transform data in your HTML template --> 
+  <h4> {{ product.price | currency }}</h4>
+  <!-- uses the currency pipe to transform product.price from a number to a currency string --> 
+  <p>{{ product.description }}</p>
+  <button (click)="addToCart(product)">Buy</button>  
+</div>
